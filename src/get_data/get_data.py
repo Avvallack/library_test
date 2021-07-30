@@ -1,10 +1,22 @@
-import yfinance as yf
-import datetime as dt
+"""
+Module provide method for get data from yfinance library and save it into csv file
+"""
+
 import os
+import datetime as dt
 from argparse import ArgumentParser
+import yfinance as yf
 
 
-def get_hour_data(tick_name, date):
+
+
+def get_hour_data(tick_name: str, date: str) -> None:
+    """
+    Downloads data for specific date and hour for specific tick (company)
+    :param tick_name: stocj name of company
+    :param date: string dae representation in format %Y-%m-%d-%H
+    :return: None
+    """
     date = dt.datetime.strptime(date, "%Y-%m-%d-%H")
     ticker = yf.Ticker(tick_name)
     date = date - dt.timedelta(hours=1)
